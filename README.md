@@ -127,6 +127,14 @@ npm run test:auth     # run only the auth suite
 npm run report        # open the last HTML report
 ```
 
+## Test Result
+
+All automated test scenarios were executed successfully using Playwright.
+
+![Playwright Test Result](report/images/playwright-report.png)
+![Playwright Test Details](report/images/test-details.png)
+
+
 ## Configuration
 
 `playwright.config.js` is configured with:
