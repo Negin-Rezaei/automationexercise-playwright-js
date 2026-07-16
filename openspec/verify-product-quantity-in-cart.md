@@ -3,10 +3,11 @@
 - **Title:** Verify Product Quantity in Cart
 - **Feature:** Shopping Cart Management
 - **Module:** Product Catalog & Cart
-- **Priority:** Medium
+- **Priority:** High
 - **Requirement ID:** REQ-CART-002
 - **Test Case ID:** TC-013
 - **Version:** 1.0
+- **Automation Reference:** [tests/cart/verify_product_quantity_in_cart.spec.js](../tests/cart/verify_product_quantity_in_cart.spec.js)
 
 ## Overview
 

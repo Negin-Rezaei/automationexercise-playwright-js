@@ -3,10 +3,11 @@
 - **Title:** Add Products in Cart
 - **Feature:** Shopping Cart Management
 - **Module:** Product Catalog & Cart
-- **Priority:** High
+- **Priority:** Critical 
 - **Requirement ID:** REQ-CART-001
 - **Test Case ID:** TC-012
 - **Version:** 1.0
+- **Automation Reference:** [tests/cart/add_products_to_cart.spec.js](../tests/cart/add_products_to_cart.spec.js)
 
 ## Overview
 

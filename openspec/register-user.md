@@ -3,10 +3,11 @@
 - **Title:** Register User
 - **Feature:** User Registration
 - **Module:** Authentication & Account Management
-- **Priority:** High
+- **Priority:** Critical 
 - **Requirement ID:** REQ-AUTH-001
 - **Test Case ID:** TC-001
 - **Version:** 1.0
+- **Automation Reference:** [tests/auth/register.spec.js](../tests/auth/register.spec.js)
 
 ## Overview
 
