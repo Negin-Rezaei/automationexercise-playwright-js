@@ -1,0 +1,27 @@
+{
+  "name": "automationexercise-playwright-js",
+  "version": "1.0.0",
+  "description": "Playwright automation framework for automationexercise.com built with JavaScript (ES Modules)",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:auth": "playwright test tests/auth",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen https://automationexercise.com"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "testing",
+    "pom"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.61.1",
+    "dotenv": "^16.4.5"
+  }
+}
