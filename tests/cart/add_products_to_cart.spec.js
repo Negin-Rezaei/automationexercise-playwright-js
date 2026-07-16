@@ -50,10 +50,10 @@ test.describe('Cart', () => {
         const row = cartPage.getRowByProductName(product.name);
 
         await expect(row).toBeVisible();
-        await expect(cartPage.rowProductName(row)).toHaveText(product.name);
-        await expect(cartPage.rowPrice(row)).toHaveText(product.price);
-        await expect(cartPage.rowQuantity(row)).toHaveText('1');
-        await expect(cartPage.rowTotal(row)).toHaveText(product.price);
+        await expect(cartPage.getProductName(row)).toHaveText(product.name);
+        await expect(cartPage.getPrice(row)).toHaveText(product.price);
+        await expect(cartPage.getQuantity(row)).toHaveText('1');
+        await expect(cartPage.getTotal(row)).toHaveText(product.price);
       }
     });
   });

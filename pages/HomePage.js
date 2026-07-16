@@ -68,7 +68,7 @@ export class HomePage extends BasePage {
 
   /**
    * Gets the "Logged in as {username}" indicator for the given user.
-   * @async
+   * 
    * @param {string} username - Username expected to be shown as logged in.
    * @returns {import('@playwright/test').Locator}
    */

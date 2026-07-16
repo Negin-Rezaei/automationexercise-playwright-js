@@ -1,4 +1,3 @@
-// @js-check
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../../pages/HomePage.js';
 import { SignupLoginPage } from '../../pages/SignupLoginPage.js';

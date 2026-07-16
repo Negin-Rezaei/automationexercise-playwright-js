@@ -47,8 +47,8 @@ test.describe('Cart', () => {
       const row = cartPage.getRowByProductName(productName);
 
       await expect(row).toBeVisible();
-      await expect(cartPage.rowProductName(row)).toHaveText(productName);
-      await expect(cartPage.rowQuantity(row)).toHaveText(String(desiredQuantity));
+      await expect(cartPage.getProductName(row)).toHaveText(productName);
+      await expect(cartPage.getQuantity(row)).toHaveText(String(desiredQuantity));
     });
   });
 });

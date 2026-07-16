@@ -5,6 +5,26 @@ import { BasePage } from './BasePage.js';
 // cannot reliably target every field. The site exposes stable data-qa attributes
 // specifically for automation, which are used here instead of brittle label text.
 /**
+ * @typedef {Object} SignupUser
+ * @property {string} title - Account title (e.g. "Mr" or "Mrs").
+ * @property {string} name - Full name.
+ * @property {string} password - Account password.
+ * @property {{day: string, month: string, year: string}} dateOfBirth - Date of birth parts.
+ * @property {boolean} [newsletter] - Whether to sign up for the newsletter.
+ * @property {boolean} [specialOffers] - Whether to receive special offers.
+ * @property {string} firstName - Address first name.
+ * @property {string} lastName - Address last name.
+ * @property {string} company - Company name.
+ * @property {string} address - Street address.
+ * @property {string} address2 - Secondary address line.
+ * @property {string} country - Country name.
+ * @property {string} state - State/province.
+ * @property {string} city - City.
+ * @property {string} zipcode - Zip/postal code.
+ * @property {string} mobileNumber - Mobile phone number.
+ */
+
+/**
  * Represents the Signup page (account and address information form).
  * Contains UI interactions and reusable actions for the specific page.
  */
@@ -55,7 +75,7 @@ export class SignupPage extends BasePage {
    * Fills in the account information section of the signup form
    * (title, name, password, date of birth, and preference checkboxes).
    * @async
-   * @param {Object} user - User data used to fill the form.
+   * @param {SignupUser} user - User data used to fill the form.
    * @returns {Promise<void>} A promise that will be resolved when the method has completed.
    */
   async fillAccountInformation(user) {
@@ -77,7 +97,7 @@ export class SignupPage extends BasePage {
   /**
    * Fills in the address information section of the signup form.
    * @async
-   * @param {Object} user - User data used to fill the form.
+   * @param {SignupUser} user - User data used to fill the form.
    * @returns {Promise<void>} A promise that will be resolved when the method has completed.
    */
   async fillAddressInformation(user) {
@@ -100,18 +120,5 @@ export class SignupPage extends BasePage {
    */
   async createAccount() {
     await this.createAccountButton.click();
-  }
-
-  /**
-   * Completes the full registration flow: fills account information,
-   * fills address information, and submits the form.
-   * @async
-   * @param {Object} user - User data used to complete registration.
-   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
-   */
-  async completeRegistration(user) {
-    await this.fillAccountInformation(user);
-    await this.fillAddressInformation(user);
-    await this.createAccount();
   }
 }

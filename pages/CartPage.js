@@ -13,6 +13,10 @@ export class CartPage extends BasePage {
   constructor(page) {
     super(page);
     this.cartRows = page.locator('#cart_info_table tbody tr');
+    this.productNameSelector = '.cart_description a';
+    this.priceSelector = '.cart_price p';
+    this.quantitySelector = '.cart_quantity button';
+    this.totalSelector = '.cart_total_price';
   }
 
   /**
@@ -40,8 +44,8 @@ export class CartPage extends BasePage {
    * @param {import('@playwright/test').Locator} row - Cart row locator.
    * @returns {import('@playwright/test').Locator}
    */
-  rowProductName(row) {
-    return row.locator('.cart_description a');
+  getProductName(row) {
+    return row.locator(this.productNameSelector);
   }
 
   /**
@@ -50,8 +54,8 @@ export class CartPage extends BasePage {
    * @param {import('@playwright/test').Locator} row - Cart row locator.
    * @returns {import('@playwright/test').Locator}
    */
-  rowPrice(row) {
-    return row.locator('.cart_price p');
+  getPrice(row) {
+    return row.locator(this.priceSelector);
   }
 
   /**
@@ -60,8 +64,8 @@ export class CartPage extends BasePage {
    * @param {import('@playwright/test').Locator} row - Cart row locator.
    * @returns {import('@playwright/test').Locator}
    */
-  rowQuantity(row) {
-    return row.locator('.cart_quantity button');
+  getQuantity(row) {
+    return row.locator(this.quantitySelector);
   }
 
   /**
@@ -70,7 +74,7 @@ export class CartPage extends BasePage {
    * @param {import('@playwright/test').Locator} row - Cart row locator.
    * @returns {import('@playwright/test').Locator}
    */
-  rowTotal(row) {
-    return row.locator('.cart_total_price');
+  getTotal(row) {
+    return row.locator(this.totalSelector);
   }
 }
