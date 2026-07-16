@@ -131,8 +131,8 @@ npm run report        # open the last HTML report
 
 All automated test scenarios were executed successfully using Playwright.
 
-![Playwright Test Result](test-results/images/playwright-report.png)
-![Playwright Test Details](test-results/images/test-details.png)
+![Playwright Test Result](report/images/playwright-report.png)
+![Playwright Test Details](report/images/test-details.png)
 
 
 ## Configuration
