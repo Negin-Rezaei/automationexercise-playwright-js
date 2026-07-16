@@ -1,3 +1,4 @@
+// @js-check
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../../pages/HomePage.js';
 import { SignupLoginPage } from '../../pages/SignupLoginPage.js';
@@ -6,9 +7,13 @@ import { AccountPage } from '../../pages/AccountPage.js';
 import { createNewUser } from '../../fixtures/users.js';
 
 test.describe('User Registration', () => {
+  /** @type {HomePage} */
   let homePage;
+  /** @type {SignupLoginPage} */
   let signupLoginPage;
+  /** @type {SignupPage} */
   let signupPage;
+  /** @type {AccountPage} */
   let accountPage;
 
   test.beforeEach(async ({ page }) => {

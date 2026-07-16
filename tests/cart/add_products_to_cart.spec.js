@@ -4,8 +4,11 @@ import { ProductsPage } from '../../pages/ProductsPage.js';
 import { CartPage } from '../../pages/CartPage.js';
 
 test.describe('Cart', () => {
+  /** @type {HomePage} */
   let homePage;
+  /** @type {ProductsPage} */
   let productsPage;
+  /** @type {CartPage} */
   let cartPage;
 
   test.beforeEach(async ({ page }) => {

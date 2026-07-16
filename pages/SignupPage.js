@@ -4,7 +4,14 @@ import { BasePage } from './BasePage.js';
 // associations (e.g. both City and Zipcode point to id="city"), so getByLabel()
 // cannot reliably target every field. The site exposes stable data-qa attributes
 // specifically for automation, which are used here instead of brittle label text.
+/**
+ * Represents the Signup page (account and address information form).
+ * Contains UI interactions and reusable actions for the specific page.
+ */
 export class SignupPage extends BasePage {
+  /**
+   * @param {import('@playwright/test').Page} page - Playwright page instance.
+   */
   constructor(page) {
     super(page);
     this.accountInfoHeading = page.getByRole('heading', { name: 'Enter Account Information' });
@@ -33,11 +40,24 @@ export class SignupPage extends BasePage {
     this.createAccountButton = page.locator('[data-qa="create-account"]');
   }
 
+  /**
+   * Selects the account title ("Mr." or "Mrs.").
+   * @async
+   * @param {string} title - Title to select (case-insensitive, e.g. "Mr" or "Mrs").
+   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
+   */
   async selectTitle(title) {
     const titleLocator = title.toLowerCase() === 'mrs' ? this.titleMrs : this.titleMr;
     await titleLocator.check();
   }
 
+  /**
+   * Fills in the account information section of the signup form
+   * (title, name, password, date of birth, and preference checkboxes).
+   * @async
+   * @param {Object} user - User data used to fill the form.
+   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
+   */
   async fillAccountInformation(user) {
     await this.selectTitle(user.title);
     await this.nameInput.fill(user.name);
@@ -54,6 +74,12 @@ export class SignupPage extends BasePage {
     }
   }
 
+  /**
+   * Fills in the address information section of the signup form.
+   * @async
+   * @param {Object} user - User data used to fill the form.
+   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
+   */
   async fillAddressInformation(user) {
     await this.firstNameInput.fill(user.firstName);
     await this.lastNameInput.fill(user.lastName);
@@ -67,10 +93,22 @@ export class SignupPage extends BasePage {
     await this.mobileNumberInput.fill(user.mobileNumber);
   }
 
+  /**
+   * Submits the signup form by clicking the "Create Account" button.
+   * @async
+   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
+   */
   async createAccount() {
     await this.createAccountButton.click();
   }
 
+  /**
+   * Completes the full registration flow: fills account information,
+   * fills address information, and submits the form.
+   * @async
+   * @param {Object} user - User data used to complete registration.
+   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
+   */
   async completeRegistration(user) {
     await this.fillAccountInformation(user);
     await this.fillAddressInformation(user);
