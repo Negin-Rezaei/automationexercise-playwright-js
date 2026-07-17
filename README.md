@@ -7,7 +7,7 @@ Model and designed for maintainability, scalability, and readability.
 ## Tech Stack
 
 - [Playwright Test](https://playwright.dev/)
-- JavaScript (ES Modules) — no TypeScript
+- JavaScript (ES Modules) — no TypeScript, but type-checked via JSDoc (see below)
 - Node.js
 - [@faker-js/faker](https://fakerjs.dev/) for dynamic test data
 
@@ -44,6 +44,7 @@ project-root/
 │   ├── helpers.js                 # Small generic utilities (env var reading, etc.)
 │   └── constants.js               # Shared constant values (messages, titles, timeouts)
 ├── playwright.config.js
+├── jsconfig.json                  # Enables JSDoc-based type checking (checkJs) across the project
 ├── package.json
 ├── .env.example
 ├── .gitignore
@@ -78,6 +79,13 @@ project-root/
   the relevant Page Objects in their constructor. Page Objects still expose their own public
   methods (e.g. `addProductToCartAt()`), which delegate to the component internally — tests never
   reach into a component directly.
+- **JSDoc typing**: every constructor, method, and generated data shape is documented with JSDoc
+  (`@param`, `@returns`, typed object literals). `jsconfig.json` enables `checkJs`, so editors and
+  `tsc --noEmit`-style tooling can type-check plain JavaScript without adopting TypeScript.
+- **Stability practices**: `BasePage.goto()` waits for `domcontentloaded` rather than `load`, since
+  the site's third-party ad/tracker scripts can stall the `load` event; page transitions triggered
+  from a modal (e.g. `CartConfirmationModal`) assert the target element is visible before clicking
+  it, so a failed transition surfaces as a clear assertion failure instead of a generic timeout.
 
 ## OpenSpec Documentation
 
@@ -125,6 +133,7 @@ npm run test:ui       # run with the Playwright UI runner
 npm run test:debug    # run in debug/inspector mode
 npm run test:auth     # run only the auth suite
 npm run report        # open the last HTML report
+npm run codegen       # launch Playwright codegen against automationexercise.com
 ```
 
 ## Test Result
@@ -143,8 +152,9 @@ All automated test scenarios were executed successfully using Playwright.
 - Retries (`1` locally, `2` on CI)
 - Screenshots on failure
 - Video retained on failure
-- Trace captured on first retry
+- Trace always captured
 - HTML + list reporters
+- Runs headed, in the `chrome` browser channel
 
 ## Adding a New Test
 
