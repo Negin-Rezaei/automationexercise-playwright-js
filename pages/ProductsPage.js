@@ -29,16 +29,6 @@ export class ProductsPage extends BasePage {
   }
 
   /**
-   * Hovers over the product card at the given index to reveal its overlay actions.
-   * @async
-   * @param {number} index - Zero-based index of the product card.
-   * @returns {Promise<void>} A promise that will be resolved when the method has completed.
-   */
-  async hoverProductAt(index) {
-    await this.productGrid.hoverAt(index);
-  }
-
-  /**
    * Gets the name and price of the product card at the given index.
    * @async
    * @param {number} index - Zero-based index of the product card.

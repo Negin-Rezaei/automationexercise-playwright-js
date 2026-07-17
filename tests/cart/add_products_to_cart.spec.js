@@ -30,7 +30,6 @@ test.describe('Cart', () => {
     });
 
     const firstProduct = await test.step('Add first product to cart and continue shopping', async () => {
-      await productsPage.hoverProductAt(0);
       const product = await productsPage.getProductDetailsAt(0);
       await productsPage.addProductToCartAt(0);
       await productsPage.continueShopping();
@@ -38,7 +37,6 @@ test.describe('Cart', () => {
     });
 
     const secondProduct = await test.step('Add second product to cart and view cart', async () => {
-      await productsPage.hoverProductAt(1);
       const product = await productsPage.getProductDetailsAt(1);
       await productsPage.addProductToCartAt(1);
       await productsPage.goToCart();

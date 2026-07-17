@@ -7,13 +7,16 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  //retries: process.env.CI ? 2 : 1,
-  //workers: process.env.CI ? 1 : undefined,
-  workers: 1,
+  retries: process.env.CI ? 2 : 1,
+  workers: process.env.CI ? 1 : undefined,
   reporter: [
     ['html', { open: 'always' }],
     ['list'],
   ],
+  timeout: 60_000,
+  expect: {
+    timeout: 10_000,
+  },
   use: {
     headless: false,
     baseURL: getEnvVariable('BASE_URL', 'http://automationexercise.com'),

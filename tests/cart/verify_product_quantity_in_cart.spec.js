@@ -41,6 +41,7 @@ test.describe('Cart', () => {
 
     await test.step('View cart', async () => {
       await productDetailsPage.goToCart();
+      await expect(page).toHaveURL(/\/view_cart/);
     });
 
     await test.step('Verify the product appears in the cart with the correct quantity', async () => {
